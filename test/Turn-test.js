@@ -33,4 +33,18 @@ describe('Turn', () => {
     expect(turn.returnCard()).to.equal(card);
   });
 
+  it('should be able to evaluate a correct guess', () => {
+    const turn = new Turn('object', card);
+
+    expect(turn.evaluateGuess()).to.equal(true)
+  });
+
+  it('should be able to evaluate an incorrect guess', () => {
+    const turn = new Turn('array', card);
+
+    expect(turn.evaluateGuess()).to.equal(false)
+  });
+
+
+
 });
