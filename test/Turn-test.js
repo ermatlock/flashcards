@@ -27,4 +27,10 @@ describe('Turn', () => {
     expect(turn.returnGuess()).to.equal('pug');
   });
 
+  it('should be able to return a card', () => {
+    const turn = new Turn('pug', card);
+
+    expect(turn.returnCard()).to.equal(card);
+  });
+
 });
