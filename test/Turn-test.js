@@ -45,6 +45,14 @@ describe('Turn', () => {
     expect(turn.evaluateGuess()).to.equal(false)
   });
 
+  it('should be able to tell user if they are correct or not', () => {
+    const turn1 = new Turn('object', card);
+    const turn2 = new Turn('array', card);
+
+    expect(turn1.giveFeedback()).to.equal('correct!')
+    expect(turn2.giveFeedback()).to.equal('incorrect!')
+  });
+
 
 
 });
