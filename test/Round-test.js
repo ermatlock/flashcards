@@ -43,12 +43,7 @@ describe("Round", () => {
 	});
 
 	it("should be able to return the current card", () => {
-		expect(round.returnCurrentCard()).to.eql({
-			id: 1,
-			question: "What is Robbie's favorite animal",
-			answers: ["sea otter", "pug", "capybara"],
-			correctAnswer: "sea otter"
-		});
+		expect(round.returnCurrentCard()).to.eql(card1);
 	});
 
 	it("should have a turns counter that starts at 0", () => {
@@ -75,8 +70,9 @@ describe("Round", () => {
 	it("should store incorrect guesses", () => {
 		round.takeTurn("sea otter");
 		round.takeTurn("spleen");
+		round.takeTurn("William");
 
-		expect(round.incorrectGuesses).to.eql([14]);
+		expect(round.incorrectGuesses).to.eql([14, 12]);
 	});
 
 	it("should be able to say a guess is correct", () => {
@@ -90,4 +86,16 @@ describe("Round", () => {
 
 		expect(result).to.eql("incorrect!");
 	});
+
+	it("should be able to calculate the correct percentage", () => {
+		round.takeTurn("sea otter");
+		round.takeTurn("spleen");
+		round.takeTurn("William");
+
+		result = round.calculatePercentCorrect();
+
+		expect(result).to.equal(33.33333333333334);
+	});
+
+
 });
