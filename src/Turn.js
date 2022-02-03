@@ -17,7 +17,7 @@ class Turn {
 	}
 
 	giveFeedback() {
-		return this.guess === this.card.correctAnswer ? "correct!" : "incorrect!";
+		return this.evaluateGuess() ? "correct!" : "incorrect!";
 	}
 }
 
