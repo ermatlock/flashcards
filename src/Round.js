@@ -5,8 +5,7 @@ class Round {
 		this.deck = deck;
 		this.turn = 0;
 		this.incorrectGuesses = [];
-		this.newTurn = {}
-
+		this.newTurn = {};
 	}
 
 	returnCurrentCard() {
@@ -16,7 +15,7 @@ class Round {
 	takeTurn(guess) {
 		this.newTurn = new Turn(guess, this.deck.cards[0]);
 		if (!this.newTurn.evaluateGuess()) {
-			this.incorrectGuesses.push(this.deck.cards[0].id)
+			this.incorrectGuesses.push(this.deck.cards[0].id);
 		}
 		this.turn++;
 		this.deck.cards.shift();

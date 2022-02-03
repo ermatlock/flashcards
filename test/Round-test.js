@@ -7,7 +7,6 @@ const Deck = require("../src/Deck");
 const Round = require("../src/Round");
 
 describe("Round", () => {
-
 	beforeEach(() => {
 		card1 = new Card(
 			1,
@@ -44,7 +43,6 @@ describe("Round", () => {
 	});
 
 	it("should be able to return the current card", () => {
-
 		expect(round.returnCurrentCard()).to.eql({
 			id: 1,
 			question: "What is Robbie's favorite animal",
@@ -54,24 +52,20 @@ describe("Round", () => {
 	});
 
 	it("should have a turns counter that starts at 0", () => {
-
 		expect(round.turn).to.eql(0);
 	});
 
 	it("should start with an empty array of incorrect guesses", () => {
-
 		expect(round.incorrectGuesses).to.eql([]);
 	});
 
 	it("should instantiate a new turn when player guesses", () => {
-
 		round.takeTurn("sea otter");
 
 		expect(round.newTurn).to.be.an.instanceof(Turn);
 	});
 
 	it("should count each turn", () => {
-
 		round.takeTurn("sea otter");
 		round.takeTurn("spleen");
 
@@ -79,7 +73,6 @@ describe("Round", () => {
 	});
 
 	it("should store incorrect guesses", () => {
-
 		round.takeTurn("sea otter");
 		round.takeTurn("spleen");
 
@@ -87,21 +80,14 @@ describe("Round", () => {
 	});
 
 	it("should be able to say a guess is correct", () => {
+		const result = round.takeTurn("sea otter");
 
-		round.takeTurn("sea otter");
-
-		expect(round.newTurn.giveFeedback()).to.eql('correct!');
+		expect(result).to.eql("correct!");
 	});
 
 	it("should be able to say a guess is incorrect", () => {
+		const result = round.takeTurn("pug");
 
-		round.takeTurn("sea otter");
-		round.takeTurn("spleen");
-
-		expect(round.newTurn.giveFeedback()).to.eql('incorrect!');
+		expect(result).to.eql("incorrect!");
 	});
-
-
-
-
 });
