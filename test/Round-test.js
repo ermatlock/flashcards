@@ -47,7 +47,7 @@ describe("Round", () => {
 	});
 
 	it("should have a turns counter that starts at 0", () => {
-		expect(round.turn).to.eql(0);
+		expect(round.turns).to.eql(0);
 	});
 
 	it("should start with an empty array of incorrect guesses", () => {
@@ -64,7 +64,7 @@ describe("Round", () => {
 		round.takeTurn("sea otter");
 		round.takeTurn("spleen");
 
-		expect(round.turn).to.eql(2);
+		expect(round.turns).to.eql(2);
 	});
 
 	it("should store incorrect guesses", () => {
@@ -92,10 +92,20 @@ describe("Round", () => {
 		round.takeTurn("spleen");
 		round.takeTurn("William");
 
-		result = round.calculatePercentCorrect();
+		const result = round.calculatePercentCorrect();
 
-		expect(result).to.equal(33.33333333333334);
+		expect(result).to.equal(33);
 	});
 
+	it("should be be able to end the round", () => {
+		round.takeTurn("sea otter");
+		round.takeTurn("spleen");
+		round.takeTurn("William");
 
+		const result = round.endRound();
+
+		expect(result).to.equal(
+			"** Round over! ** You answered 33% of the questions correctly!"
+		);
+	});
 });
