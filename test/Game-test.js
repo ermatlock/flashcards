@@ -16,5 +16,7 @@ describe("Game", () => {
 		expect(game).to.be.an.instanceof(Game);
 	});
 
-	
+	it("should store the current round", () => {
+		expect(game.currentRound).to.eql({});
+	});
 });
