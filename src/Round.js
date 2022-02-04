@@ -9,16 +9,15 @@ class Round {
 	}
 
 	returnCurrentCard() {
-		return this.deck.cards[0];
+		return this.deck.cards[this.turns];
 	}
 
 	takeTurn(guess) {
-		this.newTurn = new Turn(guess, this.deck.cards[0]);
+		this.newTurn = new Turn(guess, this.deck.cards[this.turns]);
 		if (!this.newTurn.evaluateGuess()) {
-			this.incorrectGuesses.push(this.deck.cards[0].id);
+			this.incorrectGuesses.push(this.deck.cards[this.turns].id);
 		}
 		this.turns++;
-		this.deck.cards.shift();
 		return this.newTurn.giveFeedback();
 	}
 
