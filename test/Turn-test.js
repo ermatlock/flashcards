@@ -12,46 +12,35 @@ describe("Turn", () => {
 			["object", "array", "function"],
 			"object"
 		);
+		turn1 = new Turn("object", card);
+		turn2 = new Turn("array", card);
 	});
 
 	it("should be a function", () => {
-		const turn = new Turn("pug", card);
 		expect(Turn).to.be.a("function");
 	});
 
 	it("should be an instance of Turn", () => {
-		const turn = new Turn("pug", card);
-		expect(turn).to.be.an.instanceof(Turn);
+		expect(turn1).to.be.an.instanceof(Turn);
 	});
 
 	it("should be able to return a guess", () => {
-		const turn = new Turn("pug", card);
-
-		expect(turn.returnGuess()).to.equal("pug");
+		expect(turn1.returnGuess()).to.equal("object");
 	});
 
 	it("should be able to return a card", () => {
-		const turn = new Turn("pug", card);
-
-		expect(turn.returnCard()).to.equal(card);
+		expect(turn1.returnCard()).to.equal(card);
 	});
 
 	it("should be able to evaluate a correct guess", () => {
-		const turn = new Turn("object", card);
-
-		expect(turn.evaluateGuess()).to.equal(true);
+		expect(turn1.evaluateGuess()).to.equal(true);
 	});
 
 	it("should be able to evaluate an incorrect guess", () => {
-		const turn = new Turn("array", card);
-
-		expect(turn.evaluateGuess()).to.equal(false);
+		expect(turn2.evaluateGuess()).to.equal(false);
 	});
 
 	it("should be able to tell user if they are correct or not", () => {
-		const turn1 = new Turn("object", card);
-		const turn2 = new Turn("array", card);
-
 		expect(turn1.giveFeedback()).to.equal("correct!");
 		expect(turn2.giveFeedback()).to.equal("incorrect!");
 	});
